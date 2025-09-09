@@ -268,14 +268,14 @@ def check():
     
         comedo_mean = comedo_sum / num_results #never has division by 0 case
 
-        output += "<br>Overall Comedogenicity Rating:"
+        output += "<br>Overall Product Rating:"
         if comedo_mean <= 0.5:
             output += "⭐⭐⭐⭐⭐"
         elif comedo_mean <=1:
             output += "⭐⭐⭐⭐"
-        elif comedo_mean <= 2:
+        elif comedo_mean <= 2.7:
             output += "⭐⭐⭐"
-        elif comedo_mean <= 3:
+        elif comedo_mean <= 3.5:
             output += "⭐⭐"
         else:
             output += "⭐"
