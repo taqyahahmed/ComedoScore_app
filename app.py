@@ -240,15 +240,14 @@ def check():
         else:
             results[ing] = 0
 
-
     #code to return flagged ingredients:
     flagged = {}
     for ing in results:
         if results[ing] >=3:
             flagged[ing] = results[ing]
-
+    output = ""
     if flagged:
-        output = "Flagged Ingredients:\n"
+        output += "Flagged Ingredients:\n"
         for ing, score in flagged.items():
             if score == 3:
                 output += f"{ing}: {score} 🔴\n"
@@ -258,29 +257,34 @@ def check():
                 output += f"{ing}: {score} 🟡\n"
 
 
+
     # code to return overall rating:
     comedo_sum = 0
     num_results = 0
-    for i in results:
-        comedo_sum += results[i]
-        num_results += 1
+    if results:
+        for i in results:
+            comedo_sum += results[i]
+            num_results += 1
     
-    comedo_mean = comedo_sum / num_results
+        comedo_mean = comedo_sum / num_results #never has division by 0 case
 
-    output += "<br>Overall Comedogenicity Rating:"
-    if comedo_mean <= 0.5:
-        output += "⭐⭐⭐⭐⭐"
-    elif comedo_mean <=1:
-        output += "⭐⭐⭐⭐"
-    elif comedo_mean <= 2:
-        output += "⭐⭐⭐"
-    elif comedo_mean <= 3:
-        output += "⭐⭐"
-    else:
-        output += "⭐"
+        output += "<br>Overall Comedogenicity Rating:"
+        if comedo_mean <= 0.5:
+            output += "⭐⭐⭐⭐⭐"
+        elif comedo_mean <=1:
+            output += "⭐⭐⭐⭐"
+        elif comedo_mean <= 2:
+            output += "⭐⭐⭐"
+        elif comedo_mean <= 3:
+            output += "⭐⭐"
+        else:
+            output += "⭐"
+       
 
     #return:
     return output
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
