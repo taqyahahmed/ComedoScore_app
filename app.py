@@ -250,11 +250,11 @@ def check():
         output += "Flagged Ingredients:\n"
         for ing, score in flagged.items():
             if score == 3:
-                output += f"{ing}: {score} 🔴\n"
+                output += f"{ing}: {score} 🟡\n"
             elif score == 4:
                 output += f"{ing}: {score} 🟠\n"
             else:
-                output += f"{ing}: {score} 🟡\n"
+                output += f"{ing}: {score} 🔴\n"
 
 
 
